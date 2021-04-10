@@ -12,6 +12,7 @@
     "seed:rollback": "node database/seed/index --rollback"
   },
   "pre-push": [
+    "lint",
     "test"
   ],
   "jest": {
