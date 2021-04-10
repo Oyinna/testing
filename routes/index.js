@@ -16,5 +16,4 @@ router.get('/recipes/:id', RecipesController.getOne);
 router.patch('/recipes/:id', authenticateToken, RecipesController.update);
 router.delete('/recipes/:id', authenticateToken, RecipesController.delete);
 
-
 module.exports = router;
