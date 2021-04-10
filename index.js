@@ -5,25 +5,23 @@ const morgan = require('morgan');
 const routes = require('./routes/index.js');
 
 const initializeApp = () => {
+  const app = express();
 
-    const app = express();
+  // add other middleware
+  app.use(cors());
+  app.use(morgan('dev'));
 
-    // add other middleware
-    app.use(cors());
-    app.use(morgan('dev'));
+  // parse application/x-www-form-urlencoded
+  app.use(bodyParser.urlencoded({ extended: false }));
 
-    // parse application/x-www-form-urlencoded
-    app.use(bodyParser.urlencoded({ extended: false }));
+  // parse application/json
+  app.use(bodyParser.json());
 
-    // parse application/json
-    app.use(bodyParser.json());
+  app.use('/', routes);
 
-    app.use('/', routes);
+  return app;
+};
 
-    return app;
-}
-
-const app = initializeApp()
-
+const app = initializeApp();
 
 module.exports = app;

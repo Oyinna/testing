@@ -100,7 +100,7 @@ const RecipesController = {
   update: async (req, res) => {
     try {
       // check if req body is empty
-      if (Object.keys(req.body).length == 0) {
+      if (Object.keys(req.body).length === 0) {
         return res.status(400).send({
           success: false,
           message: 'field should not be empty',
@@ -109,18 +109,18 @@ const RecipesController = {
 
       // validate difficulty if it exist
       if ((req.body.difficulty) && ((typeof req.body.difficulty !== 'number') || (req.body.difficulty <= 0) || (req.body.difficulty > 3))) {
-          return res.status(400).send({
-            success: false,
-            message: 'difficulty field should be a number',
-          });
-        }
+        return res.status(400).send({
+          success: false,
+          message: 'difficulty field should be a number',
+        });
+      }
       // validate vegetarian if it exist
       if ((req.body.vegetarian) && (typeof req.body.vegetarian !== 'boolean')) {
-          return res.status(400).send({
-            success: false,
-            message: 'vegetarian field should be boolean',
-          });
-        }
+        return res.status(400).send({
+          success: false,
+          message: 'vegetarian field should be boolean',
+        });
+      }
 
       const { id } = req.params;
 
@@ -155,7 +155,7 @@ const RecipesController = {
       const { id } = req.params;
 
       // Find recipe and delete
-      const recipes = await Recipes.fetchByIdAndDelete(id);
+      await Recipes.fetchByIdAndDelete(id);
 
       return res.status(200).send({
         success: true,

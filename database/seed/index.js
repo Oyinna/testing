@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // import 'dotenv/config';
 const bcrypt = require('bcrypt');
 
@@ -78,5 +79,3 @@ const rollback = async () => {
 const isRollback = process.argv[2] === '--rollback';
 if (isRollback) rollback().then(console.log).catch(console.log).finally(() => process.exit(0));
 else seed().then(console.log).catch(console.log).finally(() => process.exit(0));
-
-

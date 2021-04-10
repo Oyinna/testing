@@ -1,25 +1,30 @@
 const Recipes = require('../models/recipes');
+
 const RecipesClass = {
   //  ------save data------
   saveRecipes: async (recipesDetail) => {
-    return await Recipes.create(recipesDetail);
-    
+    const response = await Recipes.create(recipesDetail);
+    return response;
   },
 
   allRecipes: async () => {
-    return await Recipes.find();
+    const response = await Recipes.find();
+    return response;
   },
 
   fetchById: async (id) => {
-    return await Recipes.findById(id);
+    const response = await Recipes.findById(id);
+    return response;
   },
 
   fetchByIdAndUpdate: async (id, recipesDetail) => {
-    return await Recipes.findByIdAndUpdate(id, { $set: recipesDetail }, { new: true });
+    const response = await Recipes.findByIdAndUpdate(id, { $set: recipesDetail }, { new: true });
+    return response;
   },
 
   fetchByIdAndDelete: async (id) => {
-    return await Recipes.findByIdAndDelete(id);
+    const response = await Recipes.findByIdAndDelete(id);
+    return response;
   },
 };
 
